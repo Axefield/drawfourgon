@@ -1,5 +1,11 @@
 # truligon-skills
 
+## 2.1.0
+
+### Minor Changes
+
+- [`5ed2e91`](https://github.com/Axefield/drawfourgon/commit/5ed2e910d6ff43619e9baa09552507943112f0ef) Thanks [@Axefield](https://github.com/Axefield)! - Add the official Epic Games Unreal Engine skills as `unreal-mcp`, `unreal-skill`, and `create-toolset`. The skills now work in Claude Code, Codex, and OpenCode, with client configuration examples for `.mcp.json`, `.codex/config.toml`, and `opencode.json`, plus harness-neutral project context guidance that replaces the Claude-only `SessionStart` hook. The set is adapted from Epic Games' MIT-licensed Unreal Engine Skills for Claude Code, with the official attribution preserved in `THIRD_PARTY_NOTICES.md`.
+
 ## 2.0.0
 
 ### Major Changes
