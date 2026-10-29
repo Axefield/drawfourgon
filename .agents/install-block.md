@@ -2,11 +2,13 @@
 
 One install story, one wording. `README.md`, `.changeset/*`, and every page under `docs/` must say **this** and nothing else. Change it here first, then propagate.
 
-## Managed installs first
+## Plugin installs first
 
-Lead with installs that update themselves. Fall back to skills.sh, labelled "manual updates", only for agents that have no such install. Call a route managed only if it updates without the user running a command. Put any one-time opt-in beside its install command. Never promise "instant".
+Lead with plugin installs. They update without recopying files. Say plainly when a harness still needs a command to apply an update. Fall back to skills.sh, labelled "manual updates", only for agents that have no plugin route. Put any one-time opt-in beside its install command. Never promise "instant".
 
-Every managed route installs from this repo's own marketplace, `.claude-plugin/marketplace.json` and `plugin.json`. Claude Code adds that marketplace explicitly, because `truligon-skills` is not in `claude-plugins-official`. Managed routes reinstall only when the `version` in `plugin.json` changes. The Release workflow runs `npm run version`, which copies that field from `package.json`, so users get a release when the "chore: version skills" PR merges.
+Claude Code, Codex and Copilot install from this repo's own marketplace, `.claude-plugin/marketplace.json` and `plugin.json`. Claude Code adds that marketplace explicitly, because `truligon-skills` is not in `claude-plugins-official`. Those routes reinstall only when the `version` in `plugin.json` changes. The Release workflow runs `npm run version`, which copies that field from `package.json`, so users get a release when the "chore: version skills" PR merges.
+
+OpenCode installs the repository as a Git package and reads the same `plugin.json` list when it loads. Its server part registers the promoted skills, so a commit to `main` reaches users through `opencode plugin update` without a version bump.
 
 | Agent         | Route                            | Updates itself?                                                  |
 | ------------- | -------------------------------- | ---------------------------------------------------------------- |
@@ -15,10 +17,10 @@ Every managed route installs from this repo's own marketplace, `.claude-plugin/m
 | Copilot CLI   | `@truligon` marketplace          | Yes, after a one-time `autoUpdate: true`                         |
 | VS Code       | Chat: Install Plugin From Source | Yes, daily, by default                                           |
 | Gemini CLI    | `gemini skills install` (copies) | No. A Gemini extension would need a flat `skills/<name>/` layout |
-| OpenCode      | skills.sh (copies)               | No. Run `npx skills update`, and re-run `add` for new skills     |
+| OpenCode      | `opencode plugin add` (Git)      | No. Startup checks for updates; run `opencode plugin update`     |
 | Everyone else | skills.sh                        | No. Run `npx skills update`, and re-run `add` for new skills     |
 
-Sources (2026-10-08): Codex `core-plugins/src/manager.rs`; Copilot [cli-config-dir-reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-config-dir-reference); VS Code `pluginAutoUpdate.ts`; Gemini `skillLoader.ts`.
+Sources (2026-10-29): Codex `core-plugins/src/manager.rs`; Copilot [cli-config-dir-reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-config-dir-reference); VS Code `pluginAutoUpdate.ts`; Gemini `skillLoader.ts`; OpenCode [plugin management](https://opencode.ai/v2/docs/plugins#manage).
 
 Nobody has run Auggie, Droid, Qwen or Goose against this repo, so they stay on skills.sh until someone does.
 
@@ -90,17 +92,25 @@ Re-run both commands to update.
 
 ## OpenCode
 
-OpenCode has no plugin marketplace. skills.sh copies the promoted skills into the project.
+OpenCode v2 loads plugins, and its server part can register skills. This repo's plugin reads the skill list from `.claude-plugin/plugin.json` and adds each one, so the plugin and a copied install always agree.
 
 <canonical-block name="opencode">
+
+```bash
+opencode plugin add github:axefield/drawfourgon
+```
+
+Startup checks for updates; run `opencode plugin update` to apply them. `opencode plugin list` shows the installed plugin.
+
+</canonical-block>
+
+For editable skill files, use skills.sh instead:
 
 ```bash
 npx skills@latest add axefield/drawfourgon -a opencode
 ```
 
-When the installer asks which skills to take, include `setup-truligon-skills`. Re-run the command to update.
-
-</canonical-block>
+The two routes are exclusive.
 
 ## Every other agent, or editable files (skills.sh)
 
@@ -109,7 +119,7 @@ When the installer asks which skills to take, include `setup-truligon-skills`. R
 <canonical-block name="other-agents">
 
 ```bash
-npx skills@latest add axefield/drawfourgon -a <agent>  # cursor, devin, windsurf, amp, pi; omit -a to choose
+npx skills@latest add axefield/drawfourgon -a <agent>  # opencode, cursor, devin, windsurf, amp, pi; omit -a to choose
 ```
 
 When the installer asks which skills to take, include `setup-truligon-skills`. To update, run `npx skills@latest update`, and re-run `add` to pick up new skills.

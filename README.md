@@ -10,7 +10,7 @@ These skills are designed to be small, easy to adapt, and composable. They work 
 
 ## Installation (30-second setup)
 
-A plugin updates itself. [skills.sh](https://skills.sh/axefield/drawfourgon) copies editable files into your project, and you update them by hand. Pick one per agent, because installing both gives you every skill twice.
+A plugin installs the skills as a managed package. [skills.sh](https://skills.sh/axefield/drawfourgon) copies editable files into your project, and you update them by hand. Pick one per agent, because installing both gives you every skill twice.
 
 ### 1. Get the skills
 
@@ -73,13 +73,13 @@ Re-run both commands to update.
 </details>
 
 <details>
-<summary><strong>OpenCode</strong> (manual updates)</summary>
+<summary><strong>OpenCode</strong> (updates with one command)</summary>
 
 ```bash
-npx skills@latest add axefield/drawfourgon -a opencode
+opencode plugin add github:axefield/drawfourgon
 ```
 
-When the installer asks which skills to take, include `setup-truligon-skills`. Re-run the command to update.
+Startup checks for updates; run `opencode plugin update` to apply them. `opencode plugin list` shows the installed plugin.
 
 </details>
 
@@ -87,7 +87,7 @@ When the installer asks which skills to take, include `setup-truligon-skills`. R
 <summary><strong>Any other agent, or editable files</strong> (manual updates)</summary>
 
 ```bash
-npx skills@latest add axefield/drawfourgon -a <agent>  # cursor, devin, windsurf, amp, pi; omit -a to choose
+npx skills@latest add axefield/drawfourgon -a <agent>  # opencode, cursor, devin, windsurf, amp, pi; omit -a to choose
 ```
 
 When the installer asks which skills to take, include `setup-truligon-skills`. To update, run `npx skills@latest update`, and re-run `add` to pick up new skills.

@@ -173,7 +173,7 @@ To check which editor answered, see **Identify the editor** in `operations.md`.
 
 ## 6. Give the agent project context
 
-The upstream plugin injected a short note with a Claude Code `SessionStart` hook. That hook is harness-specific. The portable equivalent is an instruction file that the harness reads at session start. Add the block in `references/project-context.md` to `CLAUDE.md` for Claude Code, or to `AGENTS.md` for Codex and OpenCode. This is optional, but it helps the agent prefer Unreal conventions before it reaches for the `unreal-mcp` skill.
+The upstream plugin injected a short note with a Claude Code `SessionStart` hook. That hook is harness-specific: an OpenCode plugin can inject the same text through `ctx.session.hook("context", ...)`, but the portable equivalent is an instruction file that the harness reads at session start. Add the block in `references/project-context.md` to `CLAUDE.md` for Claude Code, or to `AGENTS.md` for Codex and OpenCode. This is optional, but it helps the agent prefer Unreal conventions before it reaches for the `unreal-mcp` skill.
 
 ## Verifying
 
