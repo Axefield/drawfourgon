@@ -15,6 +15,7 @@ Every managed route installs from this repo's own marketplace, `.claude-plugin/m
 | Copilot CLI   | `@truligon` marketplace          | Yes, after a one-time `autoUpdate: true`                         |
 | VS Code       | Chat: Install Plugin From Source | Yes, daily, by default                                           |
 | Gemini CLI    | `gemini skills install` (copies) | No. A Gemini extension would need a flat `skills/<name>/` layout |
+| OpenCode      | skills.sh (copies)               | No. Run `npx skills update`, and re-run `add` for new skills     |
 | Everyone else | skills.sh                        | No. Run `npx skills update`, and re-run `add` for new skills     |
 
 Sources (2026-10-08): Codex `core-plugins/src/manager.rs`; Copilot [cli-config-dir-reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-config-dir-reference); VS Code `pluginAutoUpdate.ts`; Gemini `skillLoader.ts`.
@@ -74,7 +75,7 @@ In VS Code, run **Chat: Install Plugin From Source** and enter `https://github.c
 
 ## Gemini CLI
 
-Gemini doesn't read `.claude-plugin`, and `--path` takes one bucket. One install per promoted bucket gives exactly the promoted set (27 skills, verified 2026-10-07).
+Gemini doesn't read `.claude-plugin`, and `--path` takes one bucket. One install per promoted bucket gives exactly the promoted set.
 
 <canonical-block name="gemini">
 
@@ -87,6 +88,20 @@ Re-run both commands to update.
 
 </canonical-block>
 
+## OpenCode
+
+OpenCode has no plugin marketplace. skills.sh copies the promoted skills into the project.
+
+<canonical-block name="opencode">
+
+```bash
+npx skills@latest add axefield/drawfourgon -a opencode
+```
+
+When the installer asks which skills to take, include `setup-truligon-skills`. Re-run the command to update.
+
+</canonical-block>
+
 ## Every other agent, or editable files (skills.sh)
 
 `-a` preselects the agent. Each agent in the comment was run on 2026-10-07. Prefer skills.sh to an agent's own repo installer, such as `amp skill add` or `pi install git:…`, because those also pull in `misc/` and `in-progress/`. `npx skills update` skips skills added upstream since `add`, so the block tells users to re-run `add`.
@@ -94,7 +109,7 @@ Re-run both commands to update.
 <canonical-block name="other-agents">
 
 ```bash
-npx skills@latest add axefield/drawfourgon -a <agent>  # cursor, opencode, devin, windsurf, amp, pi; omit -a to choose
+npx skills@latest add axefield/drawfourgon -a <agent>  # cursor, devin, windsurf, amp, pi; omit -a to choose
 ```
 
 When the installer asks which skills to take, include `setup-truligon-skills`. To update, run `npx skills@latest update`, and re-run `add` to pick up new skills.

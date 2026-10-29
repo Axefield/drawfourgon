@@ -59,6 +59,16 @@ Not feature work, just upkeep.
 
 - **`/improve-codebase-architecture`** runs whenever you have a spare moment to keep the codebase good for agents to operate in. It surfaces **deepening opportunities**; picking one _generates an idea_ you can take into the main flow at `/grill-with-docs`. It's the survey that finds the candidates; **`/codebase-design`** (below) is the bench you design the chosen one on.
 
+## Unreal Engine work
+
+When the work is inside an Unreal Engine project, three model-invoked skills cover the editor and its extension points:
+
+- **`/unreal-mcp`**: drive the live editor through the Unreal MCP server. Use it for actors, Blueprints, materials, Niagara, Sequencer, Control Rigs, GAS, automation tests, and Live Coding. It discovers toolsets at runtime and treats `list_toolsets` as the authority.
+- **`/unreal-skill`**: author or review an Unreal Engine Agent Skill, the in-editor bundle of instructions registered with the server. This is not a harness skill like the ones in this repo.
+- **`/create-toolset`**: add or extend an Unreal toolset in C++ or Python and register it so the agent can call it through MCP.
+
+If the editor is not connected yet, `/unreal-mcp` walks through the client setup for Claude Code, Codex, and OpenCode.
+
 ## Vocabulary underneath
 
 Two model-invoked references that run *beneath* the other skills, each the single source of truth for its vocabulary. Reach for them directly when the **words**, not the process, are the problem; or let the skills above pull them in.

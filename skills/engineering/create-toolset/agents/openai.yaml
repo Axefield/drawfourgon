@@ -1,0 +1,3 @@
+interface:
+  display_name: "Create Toolset"
+  short_description: "Author Unreal toolsets for MCP"

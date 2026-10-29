@@ -16,7 +16,9 @@
     "code-review",
     "grilling",
     "domain-modeling",
-    "productivity"
+    "productivity",
+    "unreal-engine",
+    "mcp"
   ],
   "skills": [
     "./skills/engineering/ask-truligon",
@@ -39,6 +41,9 @@
     "./skills/engineering/pr",
     "./skills/engineering/retro",
     "./skills/engineering/wizard",
+    "./skills/engineering/unreal-mcp",
+    "./skills/engineering/unreal-skill",
+    "./skills/engineering/create-toolset",
     "./skills/productivity/grill-me",
     "./skills/productivity/grilling",
     "./skills/productivity/handoff",

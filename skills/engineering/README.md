@@ -6,7 +6,7 @@ Skills we use daily for code work.
 
 Reachable only when you type them (Claude Code: `disable-model-invocation: true`; Codex: `policy.allow_implicit_invocation: false` in `agents/openai.yaml`).
 
-- **[ask-truligon](./ask-truligon/SKILL.md)**: Ask which skill or flow fits your situation. A router over the user-invoked skills in this repo.
+- **[ask-truligon](./ask-truligon/SKILL.md)**: Ask which skill or flow fits your situation. A router over the skills in this repo.
 - **[grill-with-docs](./grill-with-docs/SKILL.md)**: Grilling session that also builds your project's domain model, sharpening terminology and updating `GLOSSARY.md` and ADRs inline.
 - **[triage](./triage/SKILL.md)**: Move issues through a state machine of triage roles.
 - **[improve-codebase-architecture](./improve-codebase-architecture/SKILL.md)**: Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.
@@ -32,3 +32,6 @@ Model- or user-reachable (rich trigger phrasing so the model can reach for them)
 - **[code-review](./code-review/SKILL.md)**: Two-axis review of the diff since a fixed point: **Standards** (does it follow the repo's coding standards, plus a Fowler smell baseline?) and **Spec** (does it faithfully implement the originating issue/spec?), run as parallel sub-agents.
 - **[pr](./pr/SKILL.md)**: The shape a pull request body should take: a summary as the smallest visual that makes the change clear, before/after evidence that it works, and a merge-danger call (one-way or two-way door, plus blast radius).
 - **[wizard](./wizard/SKILL.md)**: Generate an interactive bash wizard that walks a human through steps only they can perform: provisioning infrastructure, setting up credentials or CI secrets, walking an unfamiliar third-party dashboard, or running a one-off migration or cutover.
+- **[unreal-mcp](./unreal-mcp/SKILL.md)**: Drive a live Unreal Editor through the Unreal MCP server: discover toolsets at runtime, inspect and mutate editor state, and keep Blueprint and gameplay changes backed by evidence.
+- **[unreal-skill](./unreal-skill/SKILL.md)**: Author and review an Unreal Engine Agent Skill, the in-editor bundle of instructions registered with the Unreal MCP server, not a harness skill like the ones in this repo.
+- **[create-toolset](./create-toolset/SKILL.md)**: Author or extend an Unreal Engine toolset in C++ or Python and register it with the toolset registry so the agent can call it through MCP.

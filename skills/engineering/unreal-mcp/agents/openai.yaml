@@ -1,0 +1,3 @@
+interface:
+  display_name: "Unreal MCP"
+  short_description: "Drive Unreal Editor through MCP"

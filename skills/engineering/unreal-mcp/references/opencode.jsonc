@@ -1,0 +1,13 @@
+// Project-scoped OpenCode configuration.
+// Put this in opencode.json or opencode.jsonc at the project root.
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "servers": {
+      "unreal-mcp": {
+        "type": "remote",
+        "url": "http://127.0.0.1:8000/mcp"
+      }
+    }
+  }
+}

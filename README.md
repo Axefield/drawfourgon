@@ -73,10 +73,21 @@ Re-run both commands to update.
 </details>
 
 <details>
+<summary><strong>OpenCode</strong> (manual updates)</summary>
+
+```bash
+npx skills@latest add axefield/drawfourgon -a opencode
+```
+
+When the installer asks which skills to take, include `setup-truligon-skills`. Re-run the command to update.
+
+</details>
+
+<details>
 <summary><strong>Any other agent, or editable files</strong> (manual updates)</summary>
 
 ```bash
-npx skills@latest add axefield/drawfourgon -a <agent>  # cursor, opencode, devin, windsurf, amp, pi; omit -a to choose
+npx skills@latest add axefield/drawfourgon -a <agent>  # cursor, devin, windsurf, amp, pi; omit -a to choose
 ```
 
 When the installer asks which skills to take, include `setup-truligon-skills`. To update, run `npx skills@latest update`, and re-run `add` to pick up new skills.
@@ -203,7 +214,7 @@ Skills we use daily for code work.
 
 **User-invoked**
 
-- **[ask-truligon](./skills/engineering/ask-truligon/SKILL.md)**: Ask which skill or flow fits your situation. A router over the user-invoked skills in this repo.
+- **[ask-truligon](./skills/engineering/ask-truligon/SKILL.md)**: Ask which skill or flow fits your situation. A router over the skills in this repo.
 - **[grill-with-docs](./skills/engineering/grill-with-docs/SKILL.md)**: Grilling session that also builds your project's domain model, sharpening terminology and updating `GLOSSARY.md` and ADRs inline.
 - **[triage](./skills/engineering/triage/SKILL.md)**: Move issues through a state machine of triage roles.
 - **[improve-codebase-architecture](./skills/engineering/improve-codebase-architecture/SKILL.md)**: Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.
@@ -226,6 +237,11 @@ Skills we use daily for code work.
 - **[code-review](./skills/engineering/code-review/SKILL.md)**: Two-axis review of the diff since a fixed point: **Standards** (does it follow the repo's coding standards, plus a Fowler smell baseline?) and **Spec** (does it faithfully implement the originating issue/spec?), run as parallel sub-agents so neither pollutes the other.
 - **[pr](./skills/engineering/pr/SKILL.md)**: The shape a pull request body should take: a summary as the smallest visual that makes the change clear, before/after evidence that it works, and a merge-danger call (one-way or two-way door, plus blast radius).
 - **[wizard](./skills/engineering/wizard/SKILL.md)**: Generate an interactive bash wizard that walks a human through steps only they can perform: provisioning infrastructure, setting up credentials or CI secrets, walking an unfamiliar third-party dashboard, or running a one-off migration or cutover.
+- **[unreal-mcp](./skills/engineering/unreal-mcp/SKILL.md)**: Drive a live Unreal Editor through the Unreal MCP server: discover toolsets at runtime, inspect and mutate editor state, and keep Blueprint and gameplay changes backed by evidence.
+- **[unreal-skill](./skills/engineering/unreal-skill/SKILL.md)**: Author and review an Unreal Engine Agent Skill, the in-editor bundle of instructions registered with the Unreal MCP server, not a harness skill like the ones in this repo.
+- **[create-toolset](./skills/engineering/create-toolset/SKILL.md)**: Author or extend an Unreal Engine toolset in C++ or Python and register it with the toolset registry so the agent can call it through MCP.
+
+`unreal-mcp`, `unreal-skill`, and `create-toolset` are adapted from Epic Games' official Unreal Engine skills under the MIT licence. See [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md).
 
 ### Productivity
 
