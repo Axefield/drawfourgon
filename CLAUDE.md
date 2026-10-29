@@ -24,6 +24,17 @@ To (re)link every skill outside `deprecated/` and `misc/` into the local harness
 
 No em-dashes anywhere in this repo's prose (`SKILL.md` files, docs, `README.md`, `CHANGELOG.md`, ADRs, changesets, code comments). Where a sentence reaches for one, rewrite it instead with a comma, colon, period, parentheses, or a conjunction, whichever the sentence actually wants; never do a blind character substitution.
 
+## Git workflow
+
+Start every change on its own branch, before the first file is touched. Decide the branch at the same moment you decide files will change, not after the first edit. Game development fans out into many small pieces (engine config, assets, Blueprints, toolsets, docs), so one branch per piece keeps each piece reviewable on its own.
+
+- Name the branch `<type>/<slug>`, where `<type>` is `feat`, `fix`, `docs`, `chore` or `refactor`, and the slug names the piece. Examples: `feat/unreal-mcp-config`, `fix/toolset-discovery`, `docs/branch-first-workflow`.
+- Open a PR into `main` and merge it when the evidence is in. Do not commit directly to `main`, including for one-line fixes.
+- Add a changeset on the same branch when the change alters shipped skill behaviour. Repo instructions, docs and tooling need no changeset.
+- Never commit to `changeset-release/main`. That branch belongs to the Release workflow: merge its PR when you want to publish, and touch nothing else on it.
+- Delete the branch after the merge, locally and on the remote.
+- If work is interrupted, leave the branch pushed so the next session continues from it instead of starting over.
+
 ## Agent skills
 
 ### Triage labels
