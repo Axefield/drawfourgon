@@ -90,7 +90,7 @@ Re-run both commands to update.
 
 ## OpenCode
 
-OpenCode has no plugin marketplace. skills.sh copies the promoted skills into the project.
+OpenCode has plugins, but no plugin marketplace, and its plugin surface extends behaviour rather than delivering skills: a plugin registers hooks, event handlers and custom tools, not a skill catalogue. So skills.sh copies the promoted skills into the project. Plugins themselves load from `.opencode/plugins/` or `~/.config/opencode/plugins/`, or from npm packages named in the `plugin` array of the config.
 
 <canonical-block name="opencode">
 
