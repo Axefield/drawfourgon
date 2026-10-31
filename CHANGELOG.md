@@ -1,5 +1,11 @@
 # truligon-skills
 
+## 2.2.0
+
+### Minor Changes
+
+- [#5](https://github.com/Axefield/drawfourgon/pull/5) [`e2b4f36`](https://github.com/Axefield/drawfourgon/commit/e2b4f366b5abe22ccf786adebc5ce3642eca6582) Thanks [@Axefield](https://github.com/Axefield)! - OpenCode now installs the skills as a plugin. Run `opencode plugin add github:axefield/drawfourgon` and OpenCode registers all 30 promoted skills from the same manifest that Claude Code, Codex, and Copilot use, with user-invoked skills mapped to `autoinvoke: false`.
+
 ## 2.1.0
 
 ### Minor Changes
